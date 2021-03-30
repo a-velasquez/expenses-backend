@@ -8,16 +8,18 @@ class Api::v1::TransactionsController < ApplicationController
   end
 
   def create
-
+    @transaction = Transaction.new(transaction_params)
+    if @account.update_balance(@transaction) != 'Balance too low...'
+      @transaction.save
+      render json: @transaction
+    else
+      render json: {error: 'Balance too low...'}
+    end
   end
 
   def show
     @transaction = Transaction.find(params[:id])
     render json: @transaction 
-  end
-
-  def destroy
-
   end
 
   private
