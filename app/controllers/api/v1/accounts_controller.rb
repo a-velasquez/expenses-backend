@@ -1,6 +1,16 @@
 class Api::v1::AccountsController < ApplicationController
 
-  
+  def index
+
+  end
+
+  def create
+
+  end
+
+  def show
+
+  end
 
   private
 
