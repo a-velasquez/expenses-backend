@@ -3,11 +3,12 @@ class Api::v1::TransactionsController < ApplicationController
   before_action :set_account
 
   def index
-
+    @transactions = @account.transactions
+    render json: @transactions
   end
 
   def create
-
+    
   end
 
   def show
