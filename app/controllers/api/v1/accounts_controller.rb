@@ -1,7 +1,10 @@
 class Api::v1::AccountsController < ApplicationController
 
   def index
-
+    @accounts = Account.all 
+    render json: @accounts
+    # or
+    # render json: Account.all
   end
 
   def create
