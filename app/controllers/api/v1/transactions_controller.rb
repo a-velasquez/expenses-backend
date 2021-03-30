@@ -16,6 +16,11 @@ class Api::v1::TransactionsController < ApplicationController
 
   end
 
+  private
+
+  def transaction_params
+    params.require(:transaction).permit(:amount, :account_id, :kind, :date, :description)
+  end
 
 
 end
