@@ -8,11 +8,12 @@ class Api::v1::TransactionsController < ApplicationController
   end
 
   def create
-    
+
   end
 
   def show
-
+    @transaction = Transaction.find(params[:id])
+    render json: @transaction 
   end
 
   def destroy
