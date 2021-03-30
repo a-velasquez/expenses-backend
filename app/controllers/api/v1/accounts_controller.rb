@@ -8,11 +8,17 @@ class Api::v1::AccountsController < ApplicationController
   end
 
   def create
-
+    @account = Account.new(account_params)
+    if @accounts.save
+      render json: @account
+    else
+      render json: {error: 'Error creating account...'}
+    end
   end
 
   def show
-
+    @account = Account.find(params[:id])
+    render json: @account 
   end
 
   private
