@@ -9,7 +9,7 @@ class Api::V1::AccountsController < ApplicationController
 
   def create
     @account = Account.new(account_params)
-    if @accounts.save
+    if @account.save
       render json: @account
     else
       render json: {error: 'Error creating account...'}
@@ -30,7 +30,7 @@ class Api::V1::AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:amount, :balance)
+    params.require(:account).permit(:name, :balance)
   end
 
 end
