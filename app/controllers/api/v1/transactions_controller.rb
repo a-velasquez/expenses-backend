@@ -8,12 +8,12 @@ class Api::V1::TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = @account.transactions.new(transaction_params)
     if @account.update_balance(@transaction) != 'Balance too low...'
       @transaction.save
       render json: @account
     else
-      render json: {error: 'Balance too low...'}
+      render json: {error: 'Balance too low to process transaction'}
     end
   end
 
