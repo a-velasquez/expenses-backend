@@ -22,6 +22,14 @@ class Api::V1::TransactionsController < ApplicationController
     render json: @transaction 
   end
 
+  def destroy
+    transaction = Transaction.find(params["id"])
+    account = Account.find(transaction.account_id)
+    transaction.destroy
+    render json: account
+  end
+
+
   private
 
   def set_account 
